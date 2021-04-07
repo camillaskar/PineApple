@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">PineApple</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pineApple">PineApple</string>
+    <string name="search">Search by name</string>
+    <string name="filter">Categories</string>
+    <string name="search_button">Search</string>
+    <string name="listRes">All restaurants</string>
+    <string name="table">Book a table</string>
+    <string name="order">Order</string>
 </resources>

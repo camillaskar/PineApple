@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+  <ImageView
+      android:id="@+id/restaurant"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:src = "@drawable/ic_android_black_24dp"
+      android:layout_marginStart="@dimen/margin_small"
+      android:layout_marginEnd="@dimen/margin_small"
+      android:layout_marginTop="@dimen/margin_small"
+      />
+    <TextView
+        android:id="@+id/name_res"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="blahblah"
+        android:layout_toEndOf="@id/restaurant"
+        android:layout_marginTop="@dimen/margin_small"
+        />
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="malaysian"
+        android:layout_below="@id/name_res"
+        android:layout_toEndOf="@id/restaurant"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        />
+    <Button
+        android:id="@+id/book_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:textSize="@dimen/text_size"
+        android:text="@string/table"
+        android:textAllCaps="false"
+        android:layout_below="@id/categories"
+        android:layout_alignStart="@id/categories"
+        android:layout_marginStart="@dimen/margin_sec_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        />
+    <Button
+        android:id="@+id/order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:textSize="@dimen/text_size"
+        android:text="@string/order"
+        android:layout_toEndOf="@id/book_button"
+        android:layout_below="@id/categories"
+        android:textAllCaps="false"
+
+        />
+
+
+</RelativeLayout>

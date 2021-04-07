@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 
@@ -38,9 +39,12 @@ class Feed : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_feed, container, false)
-        view.bttn.setOnClickListener {
-            (activity as MainActivity).addFragment(Details())
-        }
+        var aral = arrayOf("Kamilla", "Aida", "Aliya",
+                "Miras", "Sveta", "Askar", "Aral", "Kazakhstan", "Almaty", "Kyzylorda")
+        val adapter = CustomAdapter()
+        view.recycleRes.adapter = adapter
+        view.recycleRes.layoutManager = LinearLayoutManager(context)
+        adapter.submit(aral)
         return view
     }
 

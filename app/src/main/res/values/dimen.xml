@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="width_button">75dp</dimen>
+    <dimen name="min_height">35dp</dimen>
+    <dimen name="text_size">10sp</dimen>
+    <dimen name="margin_sec_small">-5dp</dimen>
+</resources>
