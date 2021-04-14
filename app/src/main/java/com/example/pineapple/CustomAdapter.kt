@@ -1,30 +1,37 @@
 package com.example.pineapple
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
 class CustomAdapter() :
         RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-    private var list = arrayListOf<String>()
+    private var list = arrayListOf<Restaurant>()
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+        val nameView: TextView
+        val descriptionView: TextView
+        val bookButton: Button
 
         init {
             // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.name_res)
+            nameView = view.findViewById(R.id.name_res)
+            descriptionView = view.findViewById(R.id.categories)
+            bookButton = view.findViewById(R.id.book_button)
+
         }
     }
 
-    fun submit(dataSet: Array<String>){
+    fun submit(dataSet: List<Restaurant>){
         list.addAll(dataSet)
     }
 
@@ -44,10 +51,17 @@ class CustomAdapter() :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = list[position]
+        val restaurant:Restaurant = list[position]
+        viewHolder.nameView.text = restaurant.name
+        viewHolder.descriptionView.text = restaurant.description
+        viewHolder.bookButton.setOnClickListener {
+            Log.d("Button book", "is okay")
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = list.size
+
+
 
 }

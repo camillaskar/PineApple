@@ -1,11 +1,15 @@
 package com.example.pineapple
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 
@@ -44,7 +48,12 @@ class Feed : Fragment() {
         val adapter = CustomAdapter()
         view.recycleRes.adapter = adapter
         view.recycleRes.layoutManager = LinearLayoutManager(context)
-        adapter.submit(aral)
+        val str = activity?.assets?.open("restaurant_response.json")?.bufferedReader().use { it?.readText() }
+        val assetmanager = activity?.assets
+        val restaurant_response = Gson().fromJson(str, RestaurantResponse::class.java)
+        adapter.submit(restaurant_response.stores)
+        println(" KKKAAAA " + str)
+        Log.d("Restaurant response", "Restaurants " + restaurant_response.num_results)
         return view
     }
 
@@ -68,4 +77,5 @@ class Feed : Fragment() {
                 }
             }
     }
+
 }
