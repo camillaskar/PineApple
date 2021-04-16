@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
   <ImageView
-      android:id="@+id/restaurant"
+      android:id="@+id/restaurant_img"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:minHeight="@dimen/width_button"
+      android:minWidth="@dimen/width_button"
       tools:src = "@drawable/ic_android_black_24dp"
       android:layout_marginStart="@dimen/margin_small"
       android:layout_marginEnd="@dimen/margin_small"
@@ -18,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="blahblah"
-        android:layout_toEndOf="@id/restaurant"
+        android:layout_toEndOf="@id/restaurant_img"
         android:layout_marginTop="@dimen/margin_small"
         />
     <TextView
@@ -27,7 +29,7 @@
         android:layout_height="wrap_content"
         tools:text="malaysian"
         android:layout_below="@id/name_res"
-        android:layout_toEndOf="@id/restaurant"
+        android:layout_toEndOf="@id/restaurant_img"
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_small"
         />

@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 
 class CustomAdapter() :
@@ -21,12 +23,16 @@ class CustomAdapter() :
         val nameView: TextView
         val descriptionView: TextView
         val bookButton: Button
+        val coverView: ImageView
+        var string_res_url: String? = null
+
 
         init {
             // Define click listener for the ViewHolder's View.
             nameView = view.findViewById(R.id.name_res)
             descriptionView = view.findViewById(R.id.categories)
             bookButton = view.findViewById(R.id.book_button)
+            coverView = view.findViewById(R.id.restaurant_img)
 
         }
     }
@@ -57,6 +63,14 @@ class CustomAdapter() :
         viewHolder.bookButton.setOnClickListener {
             Log.d("Button book", "is okay")
         }
+        viewHolder.string_res_url = restaurant.cover_img_url
+
+        Glide
+            .with(viewHolder.itemView)
+            .load(restaurant.cover_img_url)
+            .placeholder(R.drawable.ic_android_black_24dp)
+            .into(viewHolder.coverView);
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
