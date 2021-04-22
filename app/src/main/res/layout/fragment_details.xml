@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Details">
+    tools:context=".Feed">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/logo2"
+        android:src="@drawable/pine_launcher_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        />
     <TextView
+        android:id="@+id/logoName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="23dp"
+        android:textStyle="normal"
+        android:text="@string/pineApple"
+        android:layout_below="@id/logo2"/>
+
+    <ImageView
+        android:id="@+id/d_line"
+        android:src="@android:drawable/divider_horizontal_textfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="500dp"
+        android:layout_below="@id/logoName2"
+        />
+
+
+    <TextView
+        android:id="@+id/nameRest"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:text="@string/restName"
+        android:layout_below="@id/logoName2"/>
+
+    <TextView
+        android:id="@+id/categoryRest"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="@string/categoryDetail"
+        android:layout_below="@id/nameRest"/>
+
+    <ImageView
+        android:id="@+id/menuImg"
+        android:src="@drawable/pine_launcher_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:minHeight="80dp"
+        android:layout_marginStart="165dp"
+        android:gravity="center"
+        android:layout_below="@id/categoryRest"
+        />
+
+    <TextView
+        android:id="@+id/list_res2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menuImg"
+        android:layout_marginBottom="5dp"
+        android:textSize="20dp"
+        android:text="@string/reviewRes"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleRes2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="details" />
+        android:layout_below="@id/list_res2"
+        />
 
-</FrameLayout>
+</RelativeLayout>

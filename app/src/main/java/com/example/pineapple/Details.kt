@@ -1,10 +1,14 @@
 package com.example.pineapple
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,11 +34,23 @@ class Details : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        var reviews = inflater.inflate(R.layout.fragment_details, container, false)
+        var reviews_list = arrayOf("Kamilla", "Aida", "Aliya",
+                "Miras", "Sveta", "Askar", "Aral", "Kazakhstan", "Almaty", "Kyzylorda")
+        val adapter = CustomAdapter()
+        view?.recycleRes?.adapter = adapter
+        view?.recycleRes?.layoutManager = LinearLayoutManager(context)
+        val str = activity?.assets?.open("restaurant_response.json")?.bufferedReader().use { it?.readText() }
+        val assetmanager = activity?.assets
+        val restaurant_response = Gson().fromJson(str, RestaurantResponse::class.java)
+        adapter.submit(restaurant_response.stores)
+        println(" KKKAAAA " + str)
+        Log.d("Restaurant response", "Restaurants " + restaurant_response.num_results)
+        return view
     }
 
     companion object {

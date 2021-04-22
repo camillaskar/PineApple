@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -62,6 +63,9 @@ class CustomAdapter() :
         viewHolder.descriptionView.text = restaurant.description
         viewHolder.bookButton.setOnClickListener {
             Log.d("Button book", "is okay")
+        }
+        viewHolder.nameView.setOnClickListener{
+
         }
         viewHolder.string_res_url = restaurant.cover_img_url
 

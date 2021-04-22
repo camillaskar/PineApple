@@ -5,7 +5,19 @@
     <string name="search">Search by name</string>
     <string name="filter">Categories</string>
     <string name="search_button">Search</string>
+    <string name="restName">Restaurant name</string>
     <string name="listRes">All restaurants</string>
+    <string name="categoryDetail">Malaysian, halal, spice, western</string>
+    <string name="reviewRes">Reviews</string>
     <string name="table">Book a table</string>
     <string name="order">Order</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
