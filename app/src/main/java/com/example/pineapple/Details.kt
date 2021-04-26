@@ -8,12 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_details.view.*
 import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ID = "param1"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -22,14 +23,14 @@ private const val ARG_PARAM2 = "param2"
  */
 class Details : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var restaurantID: Int? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            restaurantID = it.getInt(ID)
         }
     }
 
@@ -39,18 +40,10 @@ class Details : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var reviews = inflater.inflate(R.layout.fragment_details, container, false)
-        var reviews_list = arrayOf("Kamilla", "Aida", "Aliya",
-                "Miras", "Sveta", "Askar", "Aral", "Kazakhstan", "Almaty", "Kyzylorda")
-        val adapter = CustomAdapter()
-        view?.recycleRes?.adapter = adapter
         view?.recycleRes?.layoutManager = LinearLayoutManager(context)
-        val str = activity?.assets?.open("restaurant_response.json")?.bufferedReader().use { it?.readText() }
-        val assetmanager = activity?.assets
-        val restaurant_response = Gson().fromJson(str, RestaurantResponse::class.java)
-        adapter.submit(restaurant_response.stores)
-        println(" KKKAAAA " + str)
-        Log.d("Restaurant response", "Restaurants " + restaurant_response.num_results)
-        return view
+        var detailss = JsonReader.getRestaurantDetails(restaurantID!!)
+        reviews.nameRest.text = detailss?.name
+        return reviews
     }
 
     companion object {
@@ -64,11 +57,10 @@ class Details : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(restaurantId:Int) =
             Details().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ID, restaurantId)
                 }
             }
     }

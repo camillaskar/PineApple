@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class CustomAdapter() :
+class CustomAdapter(private val navigation: Navigation) :
         RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     private var list = arrayListOf<Restaurant>()
 
@@ -25,7 +25,6 @@ class CustomAdapter() :
         val descriptionView: TextView
         val bookButton: Button
         val coverView: ImageView
-        var string_res_url: String? = null
 
 
         init {
@@ -65,9 +64,9 @@ class CustomAdapter() :
             Log.d("Button book", "is okay")
         }
         viewHolder.nameView.setOnClickListener{
-
+            navigation.openFragment(fragment = Details.newInstance(restaurant.id))
         }
-        viewHolder.string_res_url = restaurant.cover_img_url
+
 
         Glide
             .with(viewHolder.itemView)

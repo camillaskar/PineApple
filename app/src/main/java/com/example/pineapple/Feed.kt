@@ -43,17 +43,10 @@ class Feed : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_feed, container, false)
-        var aral = arrayOf("Kamilla", "Aida", "Aliya",
-                "Miras", "Sveta", "Askar", "Aral", "Kazakhstan", "Almaty", "Kyzylorda")
-        val adapter = CustomAdapter()
+        val adapter = CustomAdapter(activity as MainActivity)
         view.recycleRes.adapter = adapter
         view.recycleRes.layoutManager = LinearLayoutManager(context)
-        val str = activity?.assets?.open("restaurant_response.json")?.bufferedReader().use { it?.readText() }
-        val assetmanager = activity?.assets
-        val restaurant_response = Gson().fromJson(str, RestaurantResponse::class.java)
-        adapter.submit(restaurant_response.stores)
-        println(" KKKAAAA " + str)
-        Log.d("Restaurant response", "Restaurants " + restaurant_response.num_results)
+        adapter.submit(JsonReader.getRestaurants(activity as MainActivity))
         return view
     }
 

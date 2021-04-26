@@ -9,5 +9,6 @@ data class RestaurantResponse (
 data class Restaurant(
     val name:String,
     val description:String,
-    val cover_img_url:String
+    val cover_img_url:String,
+    val id:Int
 )
