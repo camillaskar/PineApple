@@ -1,13 +1,19 @@
 package com.example.pineapple
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import android.util.Base64
+import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.fragment_details.view.*
 import kotlinx.android.synthetic.main.fragment_feed.view.*
 
@@ -24,6 +30,7 @@ private const val ID = "param1"
 class Details : Fragment() {
     // TODO: Rename and change types of parameters
     private var restaurantID: Int? = null
+    private var menuImgg: String? = null
 
 
 
@@ -34,15 +41,25 @@ class Details : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         var reviews = inflater.inflate(R.layout.fragment_details, container, false)
         view?.recycleRes?.layoutManager = LinearLayoutManager(context)
         var detailss = JsonReader.getRestaurantDetails(restaurantID!!)
         reviews.nameRest.text = detailss?.name
+        reviews.categoryRest.text = detailss?.description
+
+        Glide
+                .with(reviews.menuImg)
+                .load(detailss?.cover_img_url)
+                .placeholder(R.drawable.ic_android_black_24dp)
+                .into(reviews.menuImg);
+
         return reviews
     }
 

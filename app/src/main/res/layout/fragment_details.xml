@@ -25,9 +25,10 @@
     <ImageView
         android:id="@+id/d_line"
         android:src="@android:drawable/divider_horizontal_textfield"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="500dp"
+        android:minHeight="10dp"
         android:layout_below="@id/logoName2"
         />
 
@@ -55,12 +56,12 @@
 
     <ImageView
         android:id="@+id/menuImg"
-        android:src="@drawable/pine_launcher_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:minHeight="80dp"
-        android:layout_marginStart="165dp"
+        android:minWidth="200dp"
+        android:minHeight="200dp"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:layout_below="@id/categoryRest"
         />
