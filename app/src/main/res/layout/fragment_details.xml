@@ -18,19 +18,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="23dp"
+        android:textSize="20dp"
         android:textStyle="normal"
+        android:layout_marginBottom="10dp"
         android:text="@string/pineApple"
         android:layout_below="@id/logo2"/>
 
 
     <ImageView
         android:id="@+id/d_line"
-        android:src="@android:drawable/divider_horizontal_textfield"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="500dp"
-        android:minHeight="10dp"
+        android:src="@drawable/divider"
+        android:layout_width="500dp"
+        android:layout_height="1dp"
         android:backgroundTint="@color/black"
         android:outlineAmbientShadowColor="@color/black"
         android:layout_below="@id/logoName2"
