@@ -8,17 +8,17 @@
 
     <ImageView
         android:id="@+id/logo2"
-        android:src="@drawable/pine_launcher_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="30dp"
+        android:src="@mipmap/pine_apple"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         />
     <TextView
         android:id="@+id/logoName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20dp"
         android:textStyle="normal"
         android:layout_marginBottom="10dp"
         android:text="@string/pineApple"
@@ -30,8 +30,6 @@
         android:src="@drawable/divider"
         android:layout_width="500dp"
         android:layout_height="1dp"
-        android:backgroundTint="@color/black"
-        android:outlineAmbientShadowColor="@color/black"
         android:layout_below="@id/logoName2"
         />
 

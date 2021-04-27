@@ -7,17 +7,29 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:src="@drawable/ic_android_black_24dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:src="@mipmap/pine_apple"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         />
     <TextView
         android:id="@+id/logoName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textStyle="normal"
+        android:layout_marginBottom="10dp"
         android:text="@string/pineApple"
         android:layout_below="@id/logo"/>
+
+    <ImageView
+        android:id="@+id/d_line"
+        android:src="@drawable/divider"
+        android:layout_width="500dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/logoName"
+        />
 
     <EditText
         android:id="@+id/input"

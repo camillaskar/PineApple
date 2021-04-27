@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), Navigation {
     }
 
 
+
 //    fun openFragment(fragment: Fragment){
 //        supportFragmentManager
 //                .beginTransaction()
