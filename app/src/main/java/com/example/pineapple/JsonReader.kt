@@ -1,5 +1,6 @@
 package com.example.pineapple
 
+import android.content.Context
 import com.google.gson.Gson
 
 object JsonReader {
@@ -16,6 +17,12 @@ object JsonReader {
     fun getRestaurantDetails(id: Int): Restaurant?{
         return restaurants.firstOrNull { it.id == id}
 
+    }
+
+    fun getReviews(restaurantId:Int, context: Context?): List<Review>{
+        val reviewString = context?.assets?.open("reviews.json")?.bufferedReader().use{it?.readText()}
+        val reviewResponses = Gson().fromJson(reviewString, ReviewResponse::class.java)
+        return reviewResponses.reviews.filter { it.restaurant_id == restaurantId }
     }
 
 }

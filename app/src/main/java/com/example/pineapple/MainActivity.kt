@@ -17,6 +17,13 @@ class MainActivity : AppCompatActivity(), Navigation {
         var feed = Feed()
         openFragment(Feed())
 
+        var response = ResponseCall()
+        var test1 = response.getResponse()
+        var test = response.getResponse()
+
+        var jsonResponse = SingletonResponseCall.getResponse()
+        var jsonResponse2 = SingletonResponseCall.getResponse()
+
     }
 
     override fun openFragment(fragment: Fragment) {
@@ -26,6 +33,7 @@ class MainActivity : AppCompatActivity(), Navigation {
                 .addToBackStack(fragment::class.java.name)
                 .commit()
     }
+
 
 
 

@@ -60,7 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoName"
         android:layout_marginTop="3dp"
-        android:hint="@string/search" />
+        android:hint="@string/search"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/filter"

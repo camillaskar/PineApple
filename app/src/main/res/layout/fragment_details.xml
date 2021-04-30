@@ -96,17 +96,9 @@
         android:text="@string/reviewRes"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/list_res2"
-        android:divider="@color/black"
-        android:outlineProvider="bounds"
-        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleRes2"
+        android:id="@+id/recycleReview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/list_res2"
