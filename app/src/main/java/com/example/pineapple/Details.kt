@@ -2,16 +2,11 @@ package com.example.pineapple
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import android.util.Base64
-import android.widget.Adapter
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_details.*
@@ -49,24 +44,31 @@ class Details : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        var reviews = inflater.inflate(R.layout.fragment_details, container, false)
+        var detailsView = inflater.inflate(R.layout.fragment_details, container, false)
       //  view?.recycleRes?.layoutManager = LinearLayoutManager(context)
         var detailss = JsonReader.getRestaurantDetails(restaurantID!!)
-        reviews.nameRest.text = detailss?.name
-        reviews.categoryRest.text = detailss?.description
+        detailsView.nameRest.text = detailss?.name
+        detailsView.categoryRest.text = detailss?.description
 
         Glide
-                .with(reviews.menuImg)
+                .with(detailsView.menuImg)
                 .load(detailss?.cover_img_url)
                 .placeholder(R.drawable.ic_android_black_24dp)
-                .into(reviews.menuImg);
-
+                .into(detailsView.menuImg);
         var listRev: List<Review> = JsonReader.getReviews(restaurantID!!, context)
         val reviewAdapter = ReviewsAdapter(listRev)
-        reviews.recycleReview.adapter = reviewAdapter
-        reviews.recycleReview.layoutManager = LinearLayoutManager(context)
+        detailsView.recycleReview.adapter = reviewAdapter
+        detailsView.recycleReview.layoutManager = LinearLayoutManager(context)
 
-        return reviews
+        if(listRev.isEmpty()){
+            detailsView.recycleReview.visibility = View.GONE
+            detailsView.noReview.visibility = View.VISIBLE
+        } else{
+            detailsView.noReview.visibility = View.GONE
+            detailsView.recycleReview.visibility = View.VISIBLE
+        }
+
+        return detailsView
     }
 
     companion object {

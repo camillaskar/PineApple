@@ -96,6 +96,18 @@
         android:text="@string/reviewRes"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/noReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nothing"
+        android:layout_below="@id/list_res2"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:visibility="gone"/>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleReview"
