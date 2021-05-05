@@ -70,13 +70,7 @@ class Details : Fragment() {
         var stars:List<Float> = listRev.map { it.star  }
         println("This is the rating " + stars)
 
-        var count:Float = 0.0F
-        var average:Float = 0.0F
-        for (i in 0..(stars.size-1)) {
-            count+= stars[i]
-            println("This is the rating item " + stars[i] + " The count is " + count)
-        }
-        average = count/stars.size
+        var average:Float = stars.average().toFloat()
         println("This is the rating average " + average )
         detailsView.list_res2.text = getString(R.string.reviewRes, average)
 
