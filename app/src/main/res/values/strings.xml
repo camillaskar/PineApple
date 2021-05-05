@@ -8,7 +8,7 @@
     <string name="restName">Restaurant name</string>
     <string name="listRes">All restaurants</string>
     <string name="categoryDetail">Malaysian, halal, spice, western</string>
-    <string name="reviewRes">Reviews</string>
+    <string name="reviewRes">Reviews: Average %.2f out of 5.0 </string>
     <string name="table">Book a table</string>
     <string name="order">Order</string>
     <string name="title_activity_main2">MainActivity</string>

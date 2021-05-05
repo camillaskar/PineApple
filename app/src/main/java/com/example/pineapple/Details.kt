@@ -67,6 +67,18 @@ class Details : Fragment() {
             detailsView.noReview.visibility = View.GONE
             detailsView.recycleReview.visibility = View.VISIBLE
         }
+        var stars:List<Float> = listRev.map { it.star  }
+        println("This is the rating " + stars)
+
+        var count:Float = 0.0F
+        var average:Float = 0.0F
+        for (i in 0..(stars.size-1)) {
+            count+= stars[i]
+            println("This is the rating item " + stars[i] + " The count is " + count)
+        }
+        average = count/stars.size
+        println("This is the rating average " + average )
+        detailsView.list_res2.text = getString(R.string.reviewRes, average)
 
         return detailsView
     }

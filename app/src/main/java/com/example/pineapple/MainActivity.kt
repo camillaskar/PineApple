@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity(), Navigation {
         var jsonResponse = SingletonResponseCall.getResponse()
         var jsonResponse2 = SingletonResponseCall.getResponse()
 
+        getString(R.string.reviewRes)
+        resources.getColor(R.color.blackk)
+        resources.getDimension(R.dimen.margin_sec_small)
+        resources.getString(R.string.bottom_sheet_behavior)
+
     }
 
     override fun openFragment(fragment: Fragment) {
