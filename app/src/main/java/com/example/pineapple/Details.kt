@@ -35,6 +35,7 @@ class Details : Fragment() {
         arguments?.let {
             restaurantID = it.getInt(ID)
         }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

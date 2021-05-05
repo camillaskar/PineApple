@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class CustomAdapter(private val navigation: Navigation) :
+class CustomAdapter(private val navigation: Navigation, private val fragmentManager: FragmentManager) :
         RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     private var list = arrayListOf<Restaurant>()
 
@@ -63,10 +64,14 @@ class CustomAdapter(private val navigation: Navigation) :
         viewHolder.descriptionView.text = restaurant.description
         viewHolder.bookButton.setOnClickListener {
             Log.d("Button book", "is okay")
+            var reserved = BookATableDialogFragment.openDialog(restaurant.name)
+            reserved.show(fragmentManager, "Dialog")
         }
+
         viewHolder.nameView.setOnClickListener{
             navigation.openFragment(fragment = Details.newInstance(restaurant.id))
         }
+
 
 
         Glide
