@@ -34,8 +34,10 @@ internal class MenuAdapter(
         }
         food_img = convertView!!.findViewById(R.id.restaurant_img)
         food_name = convertView.findViewById(R.id.name_res)
-        food_img.setImageResource(numberImage[position])
-        food_name.text = numbersInWords[position]
+        convertView.food
+        food_img.setImageResource[position]
+        food_name.text = layoutInflater[position]
+
         return convertView
     }
 }

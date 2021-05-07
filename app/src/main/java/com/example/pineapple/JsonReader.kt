@@ -35,21 +35,22 @@ object JsonReader {
     }
 
     fun getPriceOfItem (menuList: List<Foods>, initialPrice:Double, number:Int):Double{
-        for (item in menuList) {
-            val total = initialPrice*number
-            
-        }
-
-    }
-
-    fun getTotalPrice(menuList:List<Foods>, costs:Map<String, Double> ):Double {
         var total = 0.0
-        for (item in menuList){
-            val itemCost = getPriceOfItem()
-            if (itemCost != null) {
-                total += itemCost
-            }
+        for (item in menuList) {
+            var totalOfItem = initialPrice*number
+            total+=totalOfItem
         }
+    return total
     }
+
+//    fun getTotalPrice(menuList:List<Foods>, costs:Map<String, Double> ):Double {
+//        var total = 0.0
+//        for (item in menuList){
+//            val itemCost = getPriceOfItem()
+//            if (itemCost != null) {
+//                total += itemCost
+//            }
+//        }
+//    }
 
 }
