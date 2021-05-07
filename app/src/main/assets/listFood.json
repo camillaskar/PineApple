@@ -1,0 +1,36 @@
+{
+  "page": 1,
+  "menus": [
+    {
+      "name": "sushi",
+      "price": 3.99,
+      "ingredients": "Salmon, rice, soy sauce, seaweed",
+      "count": 1
+    },
+    {
+      "name": "ramen",
+      "price": 7.30,
+      "ingredients": "Rice flour, water, chicken, seaweed, kimchi, eggs",
+      "count": 1
+    },
+    {
+      "name": "pizza",
+      "price": 10.99,
+      "ingredients": "Flour, water, salami, tomatoes, greens, olive oil",
+      "count": 1
+    },
+    {
+      "name": "kebab",
+      "price": 5.99,
+      "ingredients": "Lamb meat, flour, water, tomatoes, cucumber, ketchup, mayonesse",
+      "count": 1
+    },
+    {
+      "name": "chicken rice",
+      "price": 4.99,
+      "ingredients": "Rice, chicken, soy sauce",
+      "count": 1
+    }
+
+  ]
+}

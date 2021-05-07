@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Feed">
+    <ImageView
+        android:id="@+id/background_yellow"
+        android:layout_height="32dp"
+        android:layout_width="match_parent"
+        android:src="@drawable/background_yellow"
+        />
+    <ImageView
+        android:id="@+id/user_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:src="@mipmap/user_icon"
+        android:layout_marginStart="360dp"/>
+
+    <ImageView
+        android:id="@+id/d_line1"
+        android:src="@drawable/divider"
+        android:layout_width="500dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/user_icon"
+        />
+    <ImageView
+        android:id="@+id/logo2"
+        android:src="@mipmap/pine_apple"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/d_line1"
+        />
+    <TextView
+        android:id="@+id/logoName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:layout_marginBottom="10dp"
+        android:text="@string/pineApple"
+        android:layout_below="@id/logo2"/>
+
+
+    <ImageView
+        android:id="@+id/d_line"
+        android:src="@drawable/divider"
+        android:layout_width="500dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/logoName2"
+        />
+    <TextView
+        android:id="@+id/menuId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/d_line"
+        android:text="@string/menu"
+        android:textSize="25sp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        />
+    <GridView
+        android:id="@+id/gridMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="150dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="20dp"
+        android:horizontalSpacing="10dp"
+        android:layout_below="@id/menuId"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>
