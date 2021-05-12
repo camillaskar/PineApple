@@ -27,7 +27,7 @@ object JsonReader {
         return reviewResponses.reviews.filter { it.restaurant_id == restaurantId }
     }
 
-    fun getMenus(restId:Int, context: Context?): List<Foods>{
+    fun getMenus( context: Context?): List<Foods>{
         val menuString = context?.assets?.open("listFood.json")?.bufferedReader().use{it?.readText()}
         val menuResponse = Gson().fromJson(menuString, FoodValues::class.java)
         menus = menuResponse.menus

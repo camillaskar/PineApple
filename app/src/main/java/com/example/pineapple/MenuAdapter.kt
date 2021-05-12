@@ -4,40 +4,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-
-internal class MenuAdapter(
-        menuList: List<Foods>
-) :
-        BaseAdapter() {
+// TODO change to be recyclerviewAdapter - check examples CustomAdapter.kt and ReviewAdapter.kt
+class MenuAdapter(var context: Context,
+        var menuList: List<Foods>) : BaseAdapter() {
     private var layoutInflater: LayoutInflater? = null
     private lateinit var food_img: ImageView
     private lateinit var food_name: TextView
     lateinit var food_ingr: TextView
     lateinit var add_b:Button
+    lateinit var priceBut: TextView
     lateinit var picker: NumberPicker
     override fun getCount(): Int {
-        return numbersInWords.size
+        return menuList.size
     }
     override fun getItem(position: Int): Any? {
-        return null
+        return menuList[position]
     }
     override fun getItemId(position: Int): Long {
-        return 0
+        return position.toLong()
     }
     override fun getView( position: Int, convertView: View?, parent: ViewGroup): View? {
-        if (layoutInflater == null) {
-            layoutInflater =
-                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        }
-        if (convertView == null) {
-            convertView = layoutInflater!!.inflate(R.layout.menu_row, null)
-        }
-        food_img = convertView!!.findViewById(R.id.restaurant_img)
-        food_name = convertView.findViewById(R.id.name_res)
-        convertView.food
-        food_img.setImageResource[position]
-        food_name.text = layoutInflater[position]
+        var view:View = View.inflate(context, R.layout.menu_row, null)
+        food_img = view.findViewById(R.id.restaurant_img4)
+        food_name = view.findViewById(R.id.name_res4)
+        food_ingr = view.findViewById(R.id.categories4)
+        add_b = view.findViewById(R.id.book_button4)
+        picker = view.findViewById(R.id.picker)
+        priceBut = view.findViewById(R.id.price)
 
-        return convertView
+        var menuListItem:Foods = menuList[position]
+
+        food_name.text = menuListItem.name
+        food_ingr.text = menuListItem.ingredients
+        priceBut.text = menuListItem.price.toString()
+
+
+        return view
     }
 }

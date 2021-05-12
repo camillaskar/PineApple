@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/restaurant_img"
+        android:id="@+id/restaurant_img4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:minHeight="@dimen/width_button"
@@ -15,25 +15,26 @@
         android:layout_marginTop="15dp"
         />
     <TextView
-        android:id="@+id/name_res"
+        android:id="@+id/name_res4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Sushi"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:layout_marginStart="3dp"
-        android:layout_toEndOf="@id/restaurant_img"
+        android:layout_toEndOf="@id/restaurant_img4"
         android:layout_marginTop="@dimen/margin_small"
         />
     <TextView
-        android:id="@+id/categories"
+        android:id="@+id/categories4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="110dp"
         tools:text="Salmon, rice, soy sauce, seaweed"
         android:textStyle="italic"
         android:textSize="10sp"
-        android:layout_below="@id/name_res"
-        android:layout_toEndOf="@id/restaurant_img"
+        android:layout_below="@id/name_res4"
+        android:layout_toEndOf="@id/restaurant_img4"
         android:layout_marginTop="3dp"
         android:layout_marginStart="3dp"
         android:layout_marginBottom="5dp"
@@ -42,12 +43,12 @@
         android:id="@+id/picker"
         android:layout_width="10dp"
         android:layout_height="15dp"
-        android:layout_below="@id/categories"
-        android:layout_toEndOf="@id/restaurant_img"
+        android:layout_below="@id/categories4"
+        android:layout_toEndOf="@id/restaurant_img4"
         android:layout_marginStart="30dp"
         />
     <Button
-        android:id="@+id/book_button"
+        android:id="@+id/book_button4"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:minHeight="1dp"
@@ -55,9 +56,19 @@
         android:text="@string/add"
         android:textAllCaps="false"
         android:layout_below="@id/picker"
-        android:layout_toEndOf="@id/restaurant_img"
+        android:layout_toEndOf="@id/restaurant_img4"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="@dimen/margin_small"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/name_res4"
+        android:text="3.99"
+        android:id="@+id/price"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="17dp"
+        android:background="#6FE6E3DB"
         />
 
 
