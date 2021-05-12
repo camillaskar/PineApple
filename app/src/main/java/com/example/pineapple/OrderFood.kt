@@ -31,7 +31,7 @@ class OrderFood:Fragment() {
         var relativeLayout = inflater.inflate(R.layout.fragment_order, container, false)
         menuAdapter = MenuAdapter(requireContext(),menuList )
         relativeLayout.gridMenu.layoutManager = GridLayoutManager(context, 2)
-        relativeLayout.gridMenu.adapter = menuAdapter
+//        relativeLayout.gridMenu.adapter = menuAdapter
 
 
         return relativeLayout

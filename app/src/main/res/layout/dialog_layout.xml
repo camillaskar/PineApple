@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="300dp"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="0dp"
+   >
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePick"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        />
+
+    <TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePick"
+        android:layout_below="@id/datePick"
+        android:timePickerMode="spinner"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timePick"
+        android:text="@string/ho_many_people"
+        android:id="@+id/peopleNum"/>
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/peopleNum"
+        android:id="@+id/numberPick"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+
+        />
+
+</RelativeLayout>
+</ScrollView>
