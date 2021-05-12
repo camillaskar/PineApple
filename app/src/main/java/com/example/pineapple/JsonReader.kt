@@ -35,12 +35,19 @@ object JsonReader {
     }
 
     fun getPriceOfItem (menuList: List<Foods>, initialPrice:Double, number:Int):Double{
-        var total = 0.0
-        for (item in menuList) {
+
             var totalOfItem = initialPrice*number
-            total+=totalOfItem
+
+    return totalOfItem
+    }
+
+    fun getTotalPrice(menuList: List<Foods>, initialPrice: Double, number: Int):Double{
+        var total = 0.0
+        for (item in menuList){
+            var totalofItem = initialPrice*number
+            total+=totalofItem
         }
-    return total
+        return total
     }
 
 //    fun getTotalPrice(menuList:List<Foods>, costs:Map<String, Double> ):Double {

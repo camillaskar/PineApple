@@ -41,11 +41,11 @@
         />
     <NumberPicker
         android:id="@+id/picker"
-        android:layout_width="10dp"
-        android:layout_height="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@id/categories4"
         android:layout_toEndOf="@id/restaurant_img4"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         />
     <Button
         android:id="@+id/book_button4"

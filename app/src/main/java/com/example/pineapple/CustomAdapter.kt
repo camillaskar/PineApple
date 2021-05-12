@@ -26,6 +26,7 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
         val descriptionView: TextView
         val bookButton: Button
         val coverView: ImageView
+        val orderButton:Button
 
 
         init {
@@ -34,6 +35,7 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
             descriptionView = view.findViewById(R.id.categories)
             bookButton = view.findViewById(R.id.book_button)
             coverView = view.findViewById(R.id.restaurant_img)
+            orderButton = view.findViewById(R.id.order_button)
 
         }
     }
@@ -66,6 +68,9 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
             Log.d("Button book", "is okay")
             var reserved = BookATableDialogFragment.openDialog(restaurant.name)
             reserved.show(fragmentManager, "Dialog")
+        }
+        viewHolder.orderButton.setOnClickListener {
+            navigation.openFragment(fragment = OrderFood())
         }
 
         viewHolder.nameView.setOnClickListener{

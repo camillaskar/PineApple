@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -73,5 +76,33 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/orderItemText"
+    android:text="Order items:"
+    android:layout_below="@id/gridMenu"
+    android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/foodNames"
+        android:layout_toEndOf="@id/orderItemText"
+        android:text=""
+        android:layout_alignBottom="@id/orderItemText"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orderItemText"
+        android:text="Total price:"
+        android:id="@+id/totalPrice"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/totalPrice"
+        android:text="0.0F"
+        android:layout_toEndOf="@id/totalPrice"
+        android:id="@+id/total"/>
 
 </RelativeLayout>
+</ScrollView>
