@@ -1,23 +1,68 @@
 package com.example.pineapple
 
 import android.content.Context
+import androidx.room.Room
+import com.example.pineapple.database.AppRoomDatabase
 import com.google.gson.Gson
+import java.util.concurrent.atomic.AtomicBoolean
 
-object JsonReader {
-    private var restaurants = listOf<Restaurant>()
+object JsonReader  {
     private var menus= listOf<Foods>()
 
+   private var db: AppRoomDatabase? = null
 
+    private fun getResDatabase(context: Context): AppRoomDatabase {
+        if (db == null) {
+            db = Room.databaseBuilder(context, AppRoomDatabase::class.java, "database-name").build()
+        }
+        return db!!
+    }
 
-    fun getRestaurants(activity: MainActivity): List<Restaurant>{
-        val stringg = activity?.assets?.open("restaurant_response.json")?.bufferedReader().use { it?.readText() }
-        val restaurant_response = Gson().fromJson(stringg, RestaurantResponse::class.java)
-        restaurants = restaurant_response.stores
+    private val restaurantDao by lazy{
+        db!!.restaurantDao()
+    }
+
+    fun getRestaurants(activity: MainActivity): List<Restaurant> {
+        getResDatabase(activity)
+        val isEmpty = AtomicBoolean(false)
+        val thread = Thread(Runnable {
+            isEmpty.set(restaurantDao.isEmpty())
+        })
+        thread.start()
+        thread.join()
+        var restaurants = emptyList<Restaurant>()
+//        backgroudthread {
+            if (isEmpty.get()) {
+                val stringg = activity?.assets?.open("restaurant_response.json")?.bufferedReader()
+                    .use { it?.readText() }
+                val restaurant_response = Gson().fromJson(stringg, RestaurantResponse::class.java)
+                Thread(Runnable {
+                    restaurantDao.insertAll(
+                        restaurant_response.stores.map { it.toRestaurantEntity() }
+                    )
+                }).start()
+
+                restaurants=restaurant_response.stores
+            } else {
+                val thread2 = Thread(Runnable {
+                    restaurants =  restaurantDao.getAll().map { it.toRestaurant() }
+                })
+               thread2.start()
+                thread2.join()
+            }
+//        }
         return restaurants
     }
 
     fun getRestaurantDetails(id: Int): Restaurant?{
-        return restaurants.firstOrNull { it.id == id}
+
+        var restaurant:Restaurant? = null
+        var threadDetails = Thread(Runnable {
+            restaurant = restaurantDao.findByID(id).toRestaurant()
+        })
+        threadDetails.start()
+        threadDetails.join()
+        return restaurant
 
     }
 
@@ -50,14 +95,12 @@ object JsonReader {
         return total
     }
 
-//    fun getTotalPrice(menuList:List<Foods>, costs:Map<String, Double> ):Double {
-//        var total = 0.0
-//        for (item in menuList){
-//            val itemCost = getPriceOfItem()
-//            if (itemCost != null) {
-//                total += itemCost
-//            }
-//        }
-//    }
-
+    fun backgroudthread(block: () -> Unit){
+        val thread = Thread(Runnable() {
+            block
+        }
+        )
+        thread.start()
+        thread.join()
+    }
 }

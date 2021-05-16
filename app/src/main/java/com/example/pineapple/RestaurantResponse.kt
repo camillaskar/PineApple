@@ -5,7 +5,8 @@ data class RestaurantResponse (
    val is_first_time_user:Boolean,
    val sort_order:String,
    val stores:List<Restaurant>
-        )
+)
+
 data class Restaurant(
     val name:String,
     val description:String,
