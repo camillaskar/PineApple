@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.pineapple.Restaurant
 
 @Dao
 interface RestaurantDAO {
@@ -26,4 +27,7 @@ interface RestaurantDAO {
     fun count(): Int
 
     fun isEmpty() = count() == 0
+
+    @Query("SELECT * FROM ${RestaurantEntity.TableName} WHERE name OR description LIKE '%' || :searchString || '%'")
+    fun search (searchString: String): List<RestaurantEntity>
 }

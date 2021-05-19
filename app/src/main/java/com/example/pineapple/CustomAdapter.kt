@@ -44,7 +44,9 @@ class CustomAdapter(
     }
 
     fun submit(dataSet: List<Restaurant>) {
+        list.clear()
         list.addAll(dataSet)
+        notifyDataSetChanged()
     }
 
 

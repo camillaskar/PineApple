@@ -97,4 +97,12 @@ object JsonReader {
         thread.start()
         thread.join()
     }
+
+    fun search (searchString: String):List<Restaurant>{
+        var search:List<Restaurant> = emptyList<Restaurant>()
+        backgroudthread {
+            search = restaurantDao.search(searchString).map { it.toRestaurant() }
+        }
+        return search
+    }
 }

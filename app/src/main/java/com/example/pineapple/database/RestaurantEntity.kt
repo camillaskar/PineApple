@@ -7,9 +7,9 @@ import com.example.pineapple.database.RestaurantEntity.Companion.TableName
 
 @Entity(tableName = TableName)
 data class RestaurantEntity(
-    @ColumnInfo(name = "Restaurant name") val name: String,
-    @ColumnInfo(name = "Description") val description: String,
-    @ColumnInfo(name = "Image") val coverImgUrl: String,
+    val name: String,
+    val description: String,
+    val coverImgUrl: String,
     @PrimaryKey val id: Int
 ) {
     companion object {

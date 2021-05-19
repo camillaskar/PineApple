@@ -61,7 +61,7 @@
         android:layout_below="@+id/logoName"
         android:layout_marginTop="3dp"
         android:hint="@string/search"
-        android:focusable="false"/>
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/filter"

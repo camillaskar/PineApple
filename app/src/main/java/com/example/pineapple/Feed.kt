@@ -36,6 +36,12 @@ class Feed : Fragment() {
         view.recycleRes.adapter = adapter
         view.recycleRes.layoutManager = LinearLayoutManager(context)
         adapter.submit(JsonReader.getRestaurants(activity as MainActivity))
+
+        view.search_button.setOnClickListener {
+          val result =  JsonReader.search(view.input.text.toString())
+            adapter.submit(result)
+        }
+
         return view
     }
 
