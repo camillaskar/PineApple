@@ -72,7 +72,13 @@ class Details : Fragment() {
 
         var average: Float = stars.average().toFloat()
         println("This is the rating average " + average)
-        detailsView.list_res2.text = getString(R.string.reviewRes, average)
+
+        if (listRev.isNotEmpty()) {
+            detailsView.list_res2.text = getString(R.string.reviewRes, average)
+            detailsView.list_res2.visibility = View.VISIBLE
+        } else {
+            detailsView.list_res2.visibility = View.GONE
+        }
 
         return detailsView
     }

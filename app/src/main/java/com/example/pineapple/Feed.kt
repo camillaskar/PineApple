@@ -1,6 +1,7 @@
 package com.example.pineapple
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_feed.view.*
@@ -40,10 +42,16 @@ class Feed : Fragment() {
         view.search_button.setOnClickListener {
           val result =  JsonReader.search(view.input.text.toString())
             adapter.submit(result)
+            hideKeyboard()
         }
 
         return view
     }
 
+    fun hideKeyboard(){
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as
+                InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+    }
 
 }

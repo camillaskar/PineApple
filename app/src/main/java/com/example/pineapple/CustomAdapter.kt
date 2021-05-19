@@ -77,7 +77,7 @@ class CustomAdapter(
             navigation.openFragment(fragment = OrderFood())
         }
 
-        viewHolder.nameView.setOnClickListener {
+        viewHolder.itemView.setOnClickListener {
             navigation.openFragment(fragment = Details.newInstance(restaurant.id))
         }
 
