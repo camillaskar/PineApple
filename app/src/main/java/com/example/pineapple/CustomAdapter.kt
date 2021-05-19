@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class CustomAdapter(private val navigation: Navigation, private val fragmentManager: FragmentManager) :
-        RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(
+    private val navigation: Navigation,
+    private val fragmentManager: FragmentManager
+) :
+    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     private var list = arrayListOf<Restaurant>()
 
     /**
@@ -26,7 +29,7 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
         val descriptionView: TextView
         val bookButton: Button
         val coverView: ImageView
-        val orderButton:Button
+        val orderButton: Button
 
 
         init {
@@ -40,17 +43,16 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
         }
     }
 
-    fun submit(dataSet: List<Restaurant>){
+    fun submit(dataSet: List<Restaurant>) {
         list.addAll(dataSet)
     }
-
 
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.restaurant_row, viewGroup, false)
+            .inflate(R.layout.restaurant_row, viewGroup, false)
 
         return ViewHolder(view)
     }
@@ -61,7 +63,7 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        val restaurant:Restaurant = list[position]
+        val restaurant: Restaurant = list[position]
         viewHolder.nameView.text = restaurant.name
         viewHolder.descriptionView.text = restaurant.description
         viewHolder.bookButton.setOnClickListener {
@@ -73,7 +75,7 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
             navigation.openFragment(fragment = OrderFood())
         }
 
-        viewHolder.nameView.setOnClickListener{
+        viewHolder.nameView.setOnClickListener {
             navigation.openFragment(fragment = Details.newInstance(restaurant.id))
         }
 
@@ -89,7 +91,6 @@ class CustomAdapter(private val navigation: Navigation, private val fragmentMana
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = list.size
-
 
 
 }

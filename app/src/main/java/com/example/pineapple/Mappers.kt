@@ -11,7 +11,7 @@ fun Restaurant.toRestaurantEntity(): RestaurantEntity {
     )
 }
 
-fun RestaurantEntity.toRestaurant():Restaurant{
+fun RestaurantEntity.toRestaurant(): Restaurant {
     return Restaurant(
         name = this.name,
         description = this.description,

@@ -16,37 +16,13 @@ class MainActivity : AppCompatActivity(), Navigation {
         setContentView(R.layout.activity_main)
         var feed = Feed()
         openFragment(Feed())
-
-        var response = ResponseCall()
-        var test1 = response.getResponse()
-        var test = response.getResponse()
-
-        var jsonResponse = SingletonResponseCall.getResponse()
-        var jsonResponse2 = SingletonResponseCall.getResponse()
-
-        getString(R.string.reviewRes)
-        resources.getColor(R.color.blackk)
-        resources.getDimension(R.dimen.margin_sec_small)
-        resources.getString(R.string.bottom_sheet_behavior)
-
     }
 
     override fun openFragment(fragment: Fragment) {
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .addToBackStack(fragment::class.java.name)
-                .commit()
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+            .addToBackStack(fragment::class.java.name)
+            .commit()
     }
-
-
-
-
-//    fun openFragment(fragment: Fragment){
-//        supportFragmentManager
-//                .beginTransaction()
-//                .replace(R.id.container, fragment)
-//                .addToBackStack(fragment::class.java.name)
-//                .commit()
-//    }
 }

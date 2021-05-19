@@ -8,15 +8,20 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ReviewsAdapter(private val reviewList: List<Review>): RecyclerView.Adapter<ReviewsAdapter.ReviewViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewsAdapter.ReviewViewHolder {
-        val reviewView:View = LayoutInflater.from(parent.context).inflate(R.layout.review_row, parent, false)
+class ReviewsAdapter(private val reviewList: List<Review>) :
+    RecyclerView.Adapter<ReviewsAdapter.ReviewViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ReviewsAdapter.ReviewViewHolder {
+        val reviewView: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.review_row, parent, false)
         return ReviewViewHolder(reviewView)
 
     }
 
 
-    class ReviewViewHolder(reviewRowItemView: View) : RecyclerView.ViewHolder(reviewRowItemView){
+    class ReviewViewHolder(reviewRowItemView: View) : RecyclerView.ViewHolder(reviewRowItemView) {
         val author: TextView
         val description: TextView
         val star: RatingBar
@@ -30,7 +35,7 @@ class ReviewsAdapter(private val reviewList: List<Review>): RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ReviewsAdapter.ReviewViewHolder, position: Int) {
-        val reviewItem:Review = reviewList[position]
+        val reviewItem: Review = reviewList[position]
         holder.author.text = reviewItem.author
         holder.description.text = reviewItem.description
         holder.star.rating = reviewItem.star

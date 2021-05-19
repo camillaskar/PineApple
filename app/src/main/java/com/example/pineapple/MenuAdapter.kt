@@ -1,4 +1,5 @@
 package com.example.pineapple
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -19,19 +20,20 @@ class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.
 //    lateinit var picker: NumberPicker
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuAdapter.MenuViewholder {
-        val menuView:View = LayoutInflater.from(parent.context).inflate(R.layout.menu_row, parent, false)
+        val menuView: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.menu_row, parent, false)
         return MenuViewholder(menuView)
 
     }
 
 
-    class MenuViewholder(menuRowItemView: View) : RecyclerView.ViewHolder(menuRowItemView){
+    class MenuViewholder(menuRowItemView: View) : RecyclerView.ViewHolder(menuRowItemView) {
         val name: TextView
         val price: TextView
         val ingredients: TextView
         var number: NumberPicker
-        val addButton:Button
-        val foodImg:ImageView
+        val addButton: Button
+        val foodImg: ImageView
 //        var totalPrice:TextView
 //        var totalNames: TextView
 
@@ -51,15 +53,15 @@ class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.
     }
 
     override fun onBindViewHolder(holder: MenuAdapter.MenuViewholder, position: Int) {
-        val menuItem:Foods= menuList[position]
+        val menuItem: Foods = menuList[position]
         holder.name.text = menuItem.name
         holder.ingredients.text = menuItem.ingredients
         holder.price.text = menuItem.price.toString()
-        holder.number.value= menuItem.number
+        holder.number.value = menuItem.number
 
-        holder.addButton.setOnClickListener{
-          var total =  JsonReader.getTotalPrice(menuList, menuItem.price, holder.number.value )
-            println("Kamilla's :  "+ total)
+        holder.addButton.setOnClickListener {
+            var total = JsonReader.getTotalPrice(menuList, menuItem.price, holder.number.value)
+            println("Kamilla's :  " + total)
 
         }
 
@@ -68,7 +70,6 @@ class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.
     override fun getItemCount(): Int {
         return menuList.size
     }
-
 
 
 }

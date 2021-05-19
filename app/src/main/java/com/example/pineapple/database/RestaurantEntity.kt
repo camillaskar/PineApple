@@ -11,7 +11,7 @@ data class RestaurantEntity(
     @ColumnInfo(name = "Description") val description: String,
     @ColumnInfo(name = "Image") val coverImgUrl: String,
     @PrimaryKey val id: Int
-){
+) {
     companion object {
         const val TableName = "Restaurants"
     }

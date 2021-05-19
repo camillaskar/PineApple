@@ -25,5 +25,5 @@ interface RestaurantDAO {
     @Query("SELECT COUNT (*) FROM ${RestaurantEntity.TableName}")
     fun count(): Int
 
-    fun isEmpty() = count()==0
+    fun isEmpty() = count() == 0
 }

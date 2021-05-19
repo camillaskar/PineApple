@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_order.view.*
 
 
-class OrderFood:Fragment() {
+class OrderFood : Fragment() {
     private val menuList by lazy {
         JsonReader.getMenus(context)
     }
-    private var menuAdapter:MenuAdapter? = null
+    private var menuAdapter: MenuAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +23,9 @@ class OrderFood:Fragment() {
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         var relativeLayout = inflater.inflate(R.layout.fragment_order, container, false)
         menuAdapter = MenuAdapter(menuList)
