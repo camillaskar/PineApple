@@ -20,7 +20,11 @@ import kotlinx.android.synthetic.main.fragment_feed.view.*
  * Use the [Feed.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Feed : Fragment() {
+class Feed : Fragment(), ResponseCallback {
+
+    private val adapter by lazy {
+        CustomAdapter(activity as MainActivity, childFragmentManager)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +38,13 @@ class Feed : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_feed, container, false)
-        val adapter = CustomAdapter(activity as MainActivity, childFragmentManager)
+
         view.recycleRes.adapter = adapter
         view.recycleRes.layoutManager = LinearLayoutManager(context)
-        adapter.submit(JsonReader.getRestaurants(activity as MainActivity))
+        JsonReader.getRestaurants(activity as MainActivity, this)
 
         view.search_button.setOnClickListener {
-          val result =  JsonReader.search(view.input.text.toString())
+            val result = JsonReader.search(view.input.text.toString())
             adapter.submit(result)
             hideKeyboard()
         }
@@ -48,10 +52,14 @@ class Feed : Fragment() {
         return view
     }
 
-    fun hideKeyboard(){
+    fun hideKeyboard() {
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as
                 InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
+    override fun postResults(restaurants: List<Restaurant>) {
+        adapter.submit(restaurants)
+    }
 }
+

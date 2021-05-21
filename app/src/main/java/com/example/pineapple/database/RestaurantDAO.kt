@@ -28,6 +28,6 @@ interface RestaurantDAO {
 
     fun isEmpty() = count() == 0
 
-    @Query("SELECT * FROM ${RestaurantEntity.TableName} WHERE name OR description LIKE '%' || :searchString || '%'")
+    @Query("SELECT * FROM ${RestaurantEntity.TableName} WHERE name  LIKE '%' || :searchString || '%' OR description LIKE '%' || :searchString || '%'")
     fun search (searchString: String): List<RestaurantEntity>
 }

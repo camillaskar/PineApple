@@ -14,6 +14,7 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="messageDialog">Select date and time</string>
     <string name="toast">Hurray! The reservation at %s is made successfully!</string>
+    <string name="error_toast">Something went wrong! Let\'s try later</string>
     <string name="book">Reserve</string>
     <string name="cancel">Cancel </string>
     <!-- Strings used for fragments for navigation -->

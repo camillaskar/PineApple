@@ -1,15 +1,40 @@
 package com.example.pineapple
 
 import android.content.Context
+import android.widget.Toast
 import androidx.room.Room
 import com.example.pineapple.database.AppRoomDatabase
 import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.atomic.AtomicBoolean
 
 object JsonReader {
     private var menus = listOf<Foods>()
 
     private var db: AppRoomDatabase? = null
+
+    private val retrofit:Retrofit by lazy {
+            Retrofit.Builder()
+            .baseUrl("https://api.doordash.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    private val restaurantService: RestaurantService by lazy {
+        retrofit.create(RestaurantService::class.java)
+    }
+
+    private fun getRestaurantsFromAPI(): Call<RestaurantResponse>{
+        return restaurantService.getRestaurants(
+            lat = 37.422740, long = -122.139956,
+            offset = 0,
+            limit = 100
+        )
+    }
 
     private fun getResDatabase(context: Context): AppRoomDatabase {
         if (db == null) {
@@ -22,30 +47,47 @@ object JsonReader {
         db!!.restaurantDao()
     }
 
-    fun getRestaurants(activity: MainActivity): List<Restaurant> {
+    fun getRestaurants(activity: MainActivity, responseCallback:ResponseCallback) {
         getResDatabase(activity)
         val isEmpty = AtomicBoolean(false)
         backgroudthread {
             isEmpty.set(restaurantDao.isEmpty())
         }
-        var restaurants = emptyList<Restaurant>()
         if (isEmpty.get()) {
-            val stringg = activity?.assets?.open("restaurant_response.json")?.bufferedReader()
-                .use { it?.readText() }
-            val restaurant_response = Gson().fromJson(stringg, RestaurantResponse::class.java)
-            backgroudthread {
-                restaurantDao.insertAll(
-                    restaurant_response.stores.map { it.toRestaurantEntity() }
-                )
-            }
 
-            restaurants = restaurant_response.stores
+            val restaurantCall = getRestaurantsFromAPI()
+            restaurantCall.enqueue(object: Callback<RestaurantResponse> {
+                override fun onResponse(
+                    call: Call<RestaurantResponse>,
+                    response: Response<RestaurantResponse>
+
+                ) {
+                    println("API response:: " + response.body() )
+                    backgroudthread {
+                        response.body()?.stores?.map { it.toRestaurantEntity() }?.let {
+                            restaurantDao.insertAll(
+                                it
+                            )
+                        }
+                    }
+                    responseCallback.postResults(response.body()?.stores ?: emptyList())
+                }
+
+                override fun onFailure(call: Call<RestaurantResponse>, t: Throwable) {
+                    println("API response error:: " + t )
+                    Toast.makeText(
+                        activity,
+                        activity.getString(R.string.error_toast),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+
         } else {
             backgroudthread {
-                restaurants = restaurantDao.getAll().map { it.toRestaurant() }
+                responseCallback.postResults(restaurantDao.getAll().map { it.toRestaurant() })
             }
         }
-        return restaurants
     }
 
     fun getRestaurantDetails(id: Int): Restaurant? {
@@ -98,11 +140,13 @@ object JsonReader {
         thread.join()
     }
 
-    fun search (searchString: String):List<Restaurant>{
+    fun search(searchString: String):List<Restaurant>{
+        println("API response search:: " + searchString )
         var search:List<Restaurant> = emptyList<Restaurant>()
         backgroudthread {
             search = restaurantDao.search(searchString).map { it.toRestaurant() }
         }
         return search
     }
+
 }

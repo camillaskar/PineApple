@@ -11,12 +11,13 @@ import android.util.Base64
 import kotlinx.android.synthetic.main.restaurant_row.*
 
 class MainActivity : AppCompatActivity(), Navigation {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        var feed = Feed()
-        openFragment(Feed())
-    }
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+            var feed = Feed()
+            openFragment(Feed())
+            getString(R.string.reviewRes)
+        }
 
     override fun openFragment(fragment: Fragment) {
         supportFragmentManager
