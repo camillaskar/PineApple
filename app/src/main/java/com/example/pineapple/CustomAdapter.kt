@@ -32,6 +32,7 @@ class CustomAdapter(
         val orderButton: Button
 
 
+
         init {
             // Define click listener for the ViewHolder's View.
             nameView = view.findViewById(R.id.name_res)

@@ -3,10 +3,10 @@
     <color name="orange_200">#FFC107</color>
     <color name="yellow_500">#FFEB3B</color>
     <color name="yellow_700">#FFEB3B</color>
-    <color name="green_200">#8BC34A</color>
+    <color name="green_200">#F88BC34A</color>
     <color name="green_700">#8BC34A</color>
     <color name="black">#FF000000</color>
     <color name="blackk">#D0191818</color>
-    <color name="gra">#A9E8BC50</color>
+    <color name="gra">#392801</color>
 
 </resources>

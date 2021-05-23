@@ -28,5 +28,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="menu">Menu</string>
     <string name="add">Add</string>
-    <string name="ho_many_people">Ho many people?</string>
+    <string name="ho_many_people">How many people?</string>
 </resources>

@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_sec_small">
+
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_sec_small"
-        app:cardBackgroundColor="@color/green_700"
-        app:cardCornerRadius="@dimen/margin_small"
-        app:cardElevation="@dimen/margin_sec_small"
-        app:cardPreventCornerOverlap="false">
-
+        app:cardBackgroundColor="#1DCECFCD">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -79,4 +71,3 @@
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-</FrameLayout>
