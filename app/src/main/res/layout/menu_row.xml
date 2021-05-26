@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:minHeight="@dimen/width_button"
         android:minWidth="@dimen/width_button"
-        tools:src = "@android:drawable/ic_menu_gallery"
+        android:src = "@android:drawable/ic_menu_gallery"
         android:layout_marginTop="15dp"
         />
     <TextView
@@ -27,9 +27,8 @@
         />
     <TextView
         android:id="@+id/categories4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxWidth="110dp"
         tools:text="Salmon, rice, soy sauce, seaweed"
         android:textStyle="italic"
         android:textSize="10sp"
@@ -41,15 +40,16 @@
         />
     <NumberPicker
         android:id="@+id/picker"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/categories4"
         android:layout_toEndOf="@id/restaurant_img4"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
         />
     <Button
         android:id="@+id/book_button4"
-        android:layout_width="50dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="1dp"
         android:textSize="6sp"
@@ -57,8 +57,8 @@
         android:textAllCaps="false"
         android:layout_below="@id/picker"
         android:layout_toEndOf="@id/restaurant_img4"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
         />
     <TextView
         android:layout_width="wrap_content"

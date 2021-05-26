@@ -1,29 +1,25 @@
 package com.example.pineapple
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Feed.newInstance] factory method to
+ * Use the [FeedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Feed : Fragment(), ResponseCallback {
+class FeedFragment : Fragment(), ResponseCallback {
 
     private val adapter by lazy {
-        CustomAdapter(activity as MainActivity, childFragmentManager)
+        FeedAdapter(activity as MainActivity, childFragmentManager)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

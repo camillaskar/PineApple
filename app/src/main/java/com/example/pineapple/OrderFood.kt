@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_order.view.*
 
 
-class OrderFood : Fragment() {
+class OrderFood  : Fragment(), MenuCallback {
     private val menuList by lazy {
         JsonReader.getMenus(context)
     }
@@ -28,17 +28,26 @@ class OrderFood : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var relativeLayout = inflater.inflate(R.layout.fragment_order, container, false)
-        menuAdapter = MenuAdapter(menuList)
+        menuAdapter = MenuAdapter(menuList, this)
         relativeLayout.gridMenu.layoutManager = GridLayoutManager(context, 2)
         relativeLayout.gridMenu.adapter = menuAdapter
-        var totalNames = relativeLayout.foodNames
-        var totalPrice = relativeLayout.total
+        var totalNamesVIew = relativeLayout.foodNames
+        var totalPriceView = relativeLayout.total
+//        totalPriceView.text = totalPriceOfItem(total)
 
 
         var listMenu: List<Foods> = JsonReader.getMenus(context)
 
 
         return relativeLayout
+    }
+
+    var totalPrice = 0.0
+
+    override fun totalPriceOfItem(total: Double) {
+        totalPrice += total
+        println("Kamilla's total of the item :  " + total + "  the whole total  " + totalPrice)
+        view?.total?.text = totalPrice.toString()
     }
 
 

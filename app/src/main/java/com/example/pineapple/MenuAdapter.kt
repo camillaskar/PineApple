@@ -9,15 +9,10 @@ import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.dialog_layout.view.*
 
-// TODO change to be recyclerviewAdapter - check examples CustomAdapter.kt and ReviewAdapter.kt
-class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.MenuViewholder>() {
-//    private var layoutInflater: LayoutInflater? = null
-//    private lateinit var food_img: ImageView
-//    private lateinit var food_name: TextView
-//    lateinit var food_ingr: TextView
-//    lateinit var add_b:Button
-//    lateinit var priceBut: TextView
-//    lateinit var picker: NumberPicker
+class MenuAdapter(val menuList: List<Foods>,
+val menuCallback: MenuCallback
+) : RecyclerView.Adapter<MenuAdapter.MenuViewholder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuAdapter.MenuViewholder {
         val menuView: View =
@@ -34,8 +29,7 @@ class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.
         var number: NumberPicker
         val addButton: Button
         val foodImg: ImageView
-//        var totalPrice:TextView
-//        var totalNames: TextView
+
 
         init {
             name = menuRowItemView.findViewById(R.id.name_res4)
@@ -53,14 +47,20 @@ class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.
     }
 
     override fun onBindViewHolder(holder: MenuAdapter.MenuViewholder, position: Int) {
+        /**
+         * menuItem = coca cola
+         *
+         */
         val menuItem: Foods = menuList[position]
-        holder.name.text = menuItem.name
-        holder.ingredients.text = menuItem.ingredients
-        holder.price.text = menuItem.price.toString()
-        holder.number.value = menuItem.number
+        println("Kamilla's menuItem :  " + menuItem)
+        holder.name.text = menuItem.name // name.text = "coca cola"
+        holder.ingredients.text = menuItem.ingredients // ingredients.text = "chemicals and sugar"
+        holder.price.text = menuItem.price.toString() // price.text = "5.0"
+        holder.number.value = menuItem.number // number.value = 0 // number.value = 2
 
         holder.addButton.setOnClickListener {
-            var total = JsonReader.getTotalPrice(menuList, menuItem.price, holder.number.value)
+            val total = menuItem.price * holder.number.value
+            menuCallback.totalPriceOfItem(total)
             println("Kamilla's :  " + total)
 
         }
@@ -72,37 +72,6 @@ class MenuAdapter(var menuList: List<Foods>) : RecyclerView.Adapter<MenuAdapter.
     }
 
 
-}
 
-private fun TextView.addTextChangedListener(name: TextView) {
 
 }
-
-//    override fun getCount(): Int {
-//        return menuList.size
-//    }
-//    override fun getItem(position: Int): Any? {
-//        return menuList[position]
-//    }
-//    override fun getItemId(position: Int): Long {
-//        return position.toLong()
-//    }
-//    override fun getView( position: Int, convertView: View?, parent: ViewGroup): View? {
-//        var view:View = View.inflate(context, R.layout.menu_row, null)
-//        food_img = view.findViewById(R.id.restaurant_img4)
-//        food_name = view.findViewById(R.id.name_res4)
-//        food_ingr = view.findViewById(R.id.categories4)
-//        add_b = view.findViewById(R.id.book_button4)
-//        picker = view.findViewById(R.id.picker)
-//        priceBut = view.findViewById(R.id.price)
-//
-//        var menuListItem:Foods = menuList[position]
-//
-//        food_name.text = menuListItem.name
-//        food_ingr.text = menuListItem.ingredients
-//        priceBut.text = menuListItem.price.toString()
-//
-//
-//        return view
-//    }
-//}

@@ -115,9 +115,9 @@ object JsonReader {
         return menus
     }
 
-    fun getPriceOfItem(menuList: List<Foods>, initialPrice: Double, number: Int): Double {
+    fun getPriceOfItem(initialPrice: Double, number: Int): Double {
 
-        var totalOfItem = initialPrice * number
+        val totalOfItem = initialPrice * number
 
         return totalOfItem
     }
@@ -125,7 +125,7 @@ object JsonReader {
     fun getTotalPrice(menuList: List<Foods>, initialPrice: Double, number: Int): Double {
         var total = 0.0
         for (item in menuList) {
-            var totalofItem = initialPrice * number
+            val totalofItem = initialPrice * number
             total += totalofItem
         }
         return total

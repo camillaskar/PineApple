@@ -8,16 +8,15 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class CustomAdapter(
+class FeedAdapter(
     private val navigation: Navigation,
     private val fragmentManager: FragmentManager
 ) :
-    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+    RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
     private var list = arrayListOf<Restaurant>()
 
     /**
