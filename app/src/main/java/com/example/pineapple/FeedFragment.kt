@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
 import kotlinx.android.synthetic.main.fragment_feed.view.*
 
 
@@ -34,6 +36,7 @@ class FeedFragment : Fragment(), ResponseCallback {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_feed, container, false)
+        sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(R.transition.transition)
 
         view.recycleRes.adapter = adapter
         view.recycleRes.layoutManager = LinearLayoutManager(context)
@@ -44,8 +47,16 @@ class FeedFragment : Fragment(), ResponseCallback {
             adapter.submit(result)
             hideKeyboard()
         }
-
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        postponeEnterTransition()
+        view.recycleRes.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
     }
 
     fun hideKeyboard() {

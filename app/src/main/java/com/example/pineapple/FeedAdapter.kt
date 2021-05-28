@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -66,6 +67,9 @@ class FeedAdapter(
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         val restaurant: Restaurant = list[position]
+
+        ViewCompat.setTransitionName(viewHolder.coverView, restaurant.name)
+
         viewHolder.nameView.text = restaurant.name
         viewHolder.descriptionView.text = restaurant.description
         viewHolder.bookButton.setOnClickListener {
@@ -78,8 +82,9 @@ class FeedAdapter(
         }
 
         viewHolder.itemView.setOnClickListener {
-            navigation.openFragment(fragment = Details.newInstance(restaurant.id))
+            navigation.openFragment(fragment = Details.newInstance(restaurant.id), view = viewHolder.coverView)
         }
+
 
 
 
