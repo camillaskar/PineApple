@@ -64,7 +64,7 @@ class Details : Fragment() {
         var detailsView = inflater.inflate(R.layout.fragment_details, container, false)
 
 //        detailsView.menuImg.transitionName = "feed"
-        postponeEnterTransition()
+         postponeEnterTransition()
 
 
         //  view?.recycleRes?.layoutManager = LinearLayoutManager(context)
@@ -85,7 +85,7 @@ class Details : Fragment() {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    startPostponedEnterTransition()
+                   startPostponedEnterTransition()
                     return false
                 }
 
@@ -96,7 +96,7 @@ class Details : Fragment() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    startPostponedEnterTransition()
+                  startPostponedEnterTransition()
                     return false
                 }
 

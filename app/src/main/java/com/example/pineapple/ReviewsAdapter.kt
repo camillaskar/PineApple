@@ -4,6 +4,7 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,7 @@ class ReviewsAdapter(private val reviewList: List<Review>) :
             author = reviewRowItemView.findViewById(R.id.user_name)
             description = reviewRowItemView.findViewById(R.id.desc)
             star = reviewRowItemView.findViewById(R.id.listitemrating)
+
         }
 
     }

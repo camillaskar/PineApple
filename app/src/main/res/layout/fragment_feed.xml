@@ -1,95 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusableInTouchMode="true"
-        tools:context=".FeedFragment">
+        app:layoutDescription="@xml/fragment_feed_xml_relativelayout3_scene"
+        tools:context=".FeedFragment"
+        >
 
         <ImageView
             android:id="@+id/background_yellow"
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:src="@drawable/background_yellow" />
+            android:src="@drawable/background_yellow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/user_icon"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginStart="360dp"
-            android:src="@mipmap/user_icon" />
+            android:src="@mipmap/user_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/d_line1"
             android:layout_width="500dp"
             android:layout_height="1dp"
-            android:layout_below="@id/user_icon"
-            android:src="@drawable/divider" />
+            android:src="@drawable/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_icon" />
 
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="80dp"
             android:layout_height="60dp"
-            android:layout_below="@id/d_line1"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:src="@mipmap/pine_apple" />
+            android:src="@mipmap/pine_apple"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/d_line1" />
 
         <TextView
             android:id="@+id/logoName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/logo"
-            android:layout_marginBottom="10dp"
+            android:layout_alignStart="@id/logo"
             android:gravity="center"
             android:text="@string/pineApple"
-            android:textStyle="normal" />
+            android:textSize="@dimen/margin_medium"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/logo"
+            app:layout_constraintTop_toBottomOf="@id/logo" />
 
         <ImageView
             android:id="@+id/d_line"
             android:layout_width="500dp"
             android:layout_height="1dp"
-            android:layout_below="@id/logoName"
-            android:src="@drawable/divider" />
+            android:layout_marginTop="10dp"
+            android:src="@drawable/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logoName" />
 
         <EditText
             android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/logoName"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="10dp"
             android:hint="@string/search"
-            android:maxLines="1" />
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoName" />
 
         <Button
             android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input"
-            android:layout_centerHorizontal="true"
             android:minHeight="40dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="@string/search_button" />
+            android:text="@string/search_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input" />
 
         <TextView
             android:id="@+id/list_res"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/search_button"
             android:text="@string/listRes"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleRes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/list_res" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_res" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </ScrollView>

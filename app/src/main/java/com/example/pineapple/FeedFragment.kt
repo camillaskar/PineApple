@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.ViewCompat
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
@@ -38,6 +41,7 @@ class FeedFragment : Fragment(), ResponseCallback {
         var view = inflater.inflate(R.layout.fragment_feed, container, false)
         sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(R.transition.transition)
 
+
         view.recycleRes.adapter = adapter
         view.recycleRes.layoutManager = LinearLayoutManager(context)
         JsonReader.getRestaurants(activity as MainActivity, this)
@@ -53,9 +57,10 @@ class FeedFragment : Fragment(), ResponseCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        postponeEnterTransition()
-        view.recycleRes.doOnPreDraw {
-            startPostponedEnterTransition()
+
+      postponeEnterTransition()
+      view.recycleRes.doOnPreDraw {
+         startPostponedEnterTransition()
         }
     }
 
