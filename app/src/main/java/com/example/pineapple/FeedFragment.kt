@@ -65,6 +65,7 @@ class FeedFragment : Fragment(), ResponseCallback {
     }
 
     fun hideKeyboard() {
+        val hh: Long
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as
                 InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
