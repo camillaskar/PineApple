@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_feed.view.*
  * Use the [FeedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FeedFragment : Fragment(), ResponseCallback {
+class FeedFragment : Fragment(), ResponseCallback, Navigation {
 
     private val adapter by lazy {
         FeedAdapter(activity as MainActivity, childFragmentManager)
@@ -39,6 +39,12 @@ class FeedFragment : Fragment(), ResponseCallback {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_feed, container, false)
+        var userIcon = view.user_icon
+
+        userIcon.setOnClickListener{
+            openFragment(AcccountFragment(), view)
+        }
+
         sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(R.transition.transition)
 
 
@@ -73,6 +79,10 @@ class FeedFragment : Fragment(), ResponseCallback {
 
     override fun postResults(restaurants: List<Restaurant>) {
         adapter.submit(restaurants)
+    }
+
+    override fun openFragment(fragment: Fragment, view: View?) {
+        TODO("Not yet implemented")
     }
 }
 
